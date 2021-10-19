@@ -66,8 +66,8 @@ class MaxPooling:
         for k in range(input.shape[0]):
             self.last_input = input[k]
             img = input[k]
-            h, w, num_filters = img.shape
-            self.uscita = np.zeros((h // 2, w // 2, num_filters))
+            h, w, NF = img.shape
+            self.uscita = np.zeros((h // 2, w // 2, NF))
 
             for img_window, i, j in self.iterate_windows(img):
                 self.uscita[i, j] = np.amax(img_window, axis=(0, 1))
