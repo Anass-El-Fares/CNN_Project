@@ -1179,7 +1179,7 @@ def Inputs_first_DL(X):
 # ------------------- START  TRAINING -------------------------------------
 
 # Create dataset
-X, y, X_test, y_test = create_data('C:/Users/el fares/PycharmProjects/pythonProject/NNFS/CNN/smile')
+X, y, X_test, y_test = create_data('C:/Users/el fares/PycharmProjects/pythonProject/CNN/smile')
 
 keys = np.array(range(X.shape[0]))
 np.random.shuffle(keys)
@@ -1220,7 +1220,7 @@ model.finalize()
 model.train(X, y, validation_data=(X_test, y_test),
             epochs=10,batch_size=300, print_every=1)
 
-model.save('C:/Users/el fares/PycharmProjects/pythonProject/NNFS/CNN/smile.model')
+model.save('C:/Users/el fares/PycharmProjects/pythonProject/CNN/smile.model')
 
 #------------------------- END TRAINING --------------------------------
 
@@ -1234,17 +1234,17 @@ Labels = {
 }
 
 # Read an image
-image_data = cv2.imread('C:/Users/el fares/PycharmProjects/pythonProject/NNFS/CNN/predict/s4.jpg', cv2.IMREAD_GRAYSCALE)
+image_data = cv2.imread('C:/Users/el fares/PycharmProjects/pythonProject/CNN/predict/s4.jpg', cv2.IMREAD_GRAYSCALE)
 larghezza = 64
 altezza = 64
-# Resize to the same size as Fashion MNIST images
+# Resize image
 image_data = cv2.resize(image_data, (larghezza,altezza),interpolation=cv2.INTER_LINEAR)
 
 # Reshape and scale pixel data
 image_data = (image_data.astype(np.float32) - 127.5) / 127.5
 
 # Load the model
-model = Model.load('C:/Users/el fares/PycharmProjects/pythonProject/NNFS/CNN/smile.model')
+model = Model.load('C:/Users/el fares/PycharmProjects/pythonProject/CNN/smile.model')
 
 # Predict on the image
 confidences = model.predict(image_data)
